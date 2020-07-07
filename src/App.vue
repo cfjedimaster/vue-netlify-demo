@@ -15,7 +15,7 @@ export default {
     }
   },
   async created() {
-    let resp = await fetch('http://localhost:8888/.netlify/functions/hello-world?name=ray');
+    let resp = await fetch('/.netlify/functions/hello-world?name=ray');
     this.msg = (await resp.json()).message;
   }
 }
