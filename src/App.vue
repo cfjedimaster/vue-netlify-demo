@@ -1,6 +1,22 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
     <h1>Welcome to Your Vue.js App</h1>
+    <p>
+    Message from severless function: {{ msg }}
+    </p>
   </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      msg:''
+    }
+  },
+  async created() {
+    let resp = await fetch('http://localhost:8888/.netlify/functions/hello-world?name=ray');
+    this.msg = (await resp.json()).message;
+  }
+}
+</script>
